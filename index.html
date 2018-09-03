@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Momemory</title>
+		<link rel="shortcut icon" href="http://www.iconj.com/ico/u/n/un7g3q5jvx.ico" type="image/x-icon" />
+		<style>
+		* { margin: 0; padding: 0;}
+
+		body { background-color: #000}
+
+		#canvas {
+		    position:absolute;
+		    width:100%;
+		    position: fixed;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    margin: auto;
+		}
+
+		#options {
+			position:fixed;
+			top:2px;
+			left:2px;
+			z-index: 10;
+			background-color: #444;
+			width: 129px;
+			font-size: 11px;
+			padding: 2px;
+			color: #fff;
+			opacity: 0.1;
+		}
+
+		#options:hover {
+			opacity: 1;
+		}
+	</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="1366px" height="768px">
+		Your broswer does not support the Canvas feature.
+		</canvas>
+		<div id="options">
+		</div>
+		<script src="script.js" type="text/javascript"></script>
+	</body>
+</html>
