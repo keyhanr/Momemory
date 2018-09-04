@@ -1,22 +1,28 @@
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 ctx.font = "25px Arial";
-ctx.fillStyle = "red";
 
 var height = c.height;
 var width = c.width;
 var center_x = width / 2;
 var center_y = height / 2;
+
 var pi = 3.14159; // i do not care for pi's uppity attitude about having very many digits
 var i = 0;
 var reveal_delay = 1000;
 var display_period = 2000;
+var block_timeout;
+var reveal_timeout;
 
 // circuletter settings
 var n = 14; // number of letters
 var r = n * 4; // circle's radius
 var marker_r = 17; // radius of marker
 var marker_displacement = 9; // displacement from letter's coordinate
+
+function set_fill_style(colour) {
+  ctx.fillStyle = colour;
+}
 
 function random_letter() {
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -28,20 +34,21 @@ function draw_letter(letter, x, y) {
 }
 
 function draw_circuletter() {
+  set_fill_style("red");
   // generate letters, choose target letter
   var letters = new Array(n);
-  for (i = 0; i < n; i++){
+  for (i = 0; i < n; i++) {
     letters[i] = random_letter();
   }
   var random_i = Math.floor(Math.random() * n);
 
   // draw letters in a circle
-  for (i = 0; i < n; i++){
+  for (i = 0; i < n; i++) {
     draw_letter(letters[i], center_x + r * Math.cos(2 * i * pi / n), center_y + r * Math.sin(2 * i * pi / n));
   }
 
   // cover target, reveal letter
-  setTimeout(function(){
+  block_timeout = setTimeout(function() {
     ctx.fillStyle = "green";
     ctx.beginPath();
     ctx.arc((center_x + r * Math.cos(2 * random_i * pi / n)) + marker_displacement, 
@@ -49,7 +56,7 @@ function draw_circuletter() {
             marker_r, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
-    setTimeout(function(){
+    reveal_timeout = setTimeout(function() {
       draw_letter(letters[random_i], center_x, center_y);
     }, reveal_delay);
   }, display_period);
@@ -61,9 +68,9 @@ function draw_rectanguletter() {
   var num_columns = 4;
 
   var rows = new Array(num_rows);
-  for (var row = 0; row < num_rows; row++){
+  for (var row = 0; row < num_rows; row++) {
     rows[row] = new Array(num_columns);
-    for (var column = 0; column < num_columns; column++){
+    for (var column = 0; column < num_columns; column++) {
       rows[row][column] = random_letter();
     }
   }
@@ -72,4 +79,13 @@ function draw_rectanguletter() {
   var target_column = Math.floor(Math.random() * num_rows);
 }
 
+function reset() {
+  clearTimeout(block_timeout);
+  clearTimeout(reveal_timeout);
+  ctx.clearRect(0, 0, width, height);
+  draw_circuletter();
+}
+
 draw_circuletter();
+
+c.onmousedown = reset;
