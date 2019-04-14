@@ -8,8 +8,7 @@ var center_x = width / 2;
 var center_y = height / 2;
 
 var pi = 3.14159; // i do not care for pi's uppity attitude about having very many digits
-var i = 0;
-var reveal_delay = 1000;
+var reveal_delay = 1000; // in milliseconds
 var display_period = 2000;
 var block_timeout;
 var reveal_timeout;
@@ -19,6 +18,14 @@ var n = 14; // number of letters
 var r = n * 4; // circle's radius
 var marker_r = 17; // radius of marker
 var marker_displacement = 9; // displacement from letter's coordinate
+
+// todo: ask for the covered letter, record accuracies
+var curr_record = {
+  "total": 0,
+  "correct": 0,
+  "wrong": 0,
+  "response_times": 0
+}
 
 function set_fill_style(colour) {
   ctx.fillStyle = colour;
@@ -33,10 +40,11 @@ function draw_letter(letter, x, y) {
   ctx.fillText(letter, x, y);
 }
 
-function draw_circuletter() {
+function draw_circuletter(n, r) {
   set_fill_style("red");
   // generate letters, choose target letter
   var letters = new Array(n);
+  var i = 0;
   for (i = 0; i < n; i++) {
     letters[i] = random_letter();
   }
@@ -47,7 +55,7 @@ function draw_circuletter() {
     draw_letter(letters[i], center_x + r * Math.cos(2 * i * pi / n), center_y + r * Math.sin(2 * i * pi / n));
   }
 
-  // cover target, reveal letter
+  // delay, cover target, delay, reveal letter
   block_timeout = setTimeout(function() {
     ctx.fillStyle = "green";
     ctx.beginPath();
@@ -80,12 +88,41 @@ function draw_rectanguletter() {
 }
 
 function reset() {
+	// start a new circuletter trial
   clearTimeout(block_timeout);
   clearTimeout(reveal_timeout);
   ctx.clearRect(0, 0, width, height);
-  draw_circuletter();
+  draw_circuletter(n, r);
+  update_display_s();
+  update_display_n();
 }
 
-draw_circuletter();
+function update_display_s() {
+  // update displayed spacing value
+  // r is the radius of the circle
+  document.getElementById("s_val").innerHTML = r / n;
+}
 
+function update_display_n() {
+  // update displayed number of letters
+  document.getElementById("n_val").innerHTML = n;
+}
+
+function update_settings() {
+  // updates internal values for r and n
+   n = document.getElementById("n_opt").value;
+   r = document.getElementById("s_opt").value * n;
+   reset();
+}
+
+function init() {
+  draw_circuletter(n, r);
+  update_display_s();
+  update_display_n();
+}
+
+init();
+
+// start a new circle when the canvas is clicked
+// todo: make a button to start a new trial
 c.onmousedown = reset;
