@@ -18,6 +18,7 @@ Intuitively, this makes sense - over the period of a year, our memory of sensati
 The goal of this module is to formally demonstrate this and with discrete sensations. In the extreme case, this experiment would go on to suggest that in a single moment (the smallest slice of time possible) we are completely aware of all.
 
 ## Notes
-* _Click anywhere to start a new trial. Look at the centre of the circle and you should be able to instantly tell which letter was behind the green blocker._
-* _Number of letters and spacing can be tweaked in the upper left corner of the screen._
+* Click anywhere to start a new trial. 
+* Look at the centre of the circle and you should be able to instantly tell which letter was behind the green blocker.
+* Number of letters and spacing can be tweaked in the upper left corner of the screen.
 * _(Momemory is short for "momentary memory", regardless the old adage holds true - mo' memory, mo' problems)_
