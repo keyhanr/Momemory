@@ -1,5 +1,5 @@
 # Momemory
-Inspired by George Sperling's [sensory memory experiment](https://psycnet.apa.org/doiLanding?doi=10.1037%2Fh0093759), this preliminary module's purpose is to demonstrate that sensory memory is bound by the amount of stimulus we are able to perceive in a given moment. That is to say, in a single moment we are completely aware of all sensations. Failure to recall all sensory information is due to limited "long-term" capacity (of even a few seconds). Within each moment, we're completely aware. In the upcoming moments we discard sensory information from previous ones, probably to make room for new ones.
+Inspired by George Sperling's [sensory memory experiment](https://psycnet.apa.org/doiLanding?doi=10.1037%2Fh0093759), this preliminary module's purpose is to demonstrate that sensory memory is bound by the amount of stimulus we are able to perceive in a given moment. That is to say, in a single moment we are completely aware of all sensations. Failure to recall all sensory information is due to limited "short-term" capacity (of even a few seconds). Within each moment we have complete awareness. In the upcoming moments we discard sensory information from previous moments probably to make room for incoming information.
 
 ## Sperling's partial recall procedure
 Sperling found that when asked to recall all 12 letters flashed to participants (in a 3x4 grid for 1/20th of a second) only 3-5 letters were reliably recalled. So instead of asking participants to recall all 12 letters, he asked only for a single row of 4 letters. However, the row was chosen at random.
@@ -8,7 +8,7 @@ A high, medium, or low tone was played fractions of a second after the letters w
 
 The conclusion of the experiment was that though participants could commit 9-12 items to sensory memory,  by the time it came to recalling them all most had already faded from sensory memory within those few seconds. 
 
-## Extending from Sperling's partial recall procedure
+## Extending on Sperling's partial recall procedure
 The module here, Momemory, is an attempt to take Sperling's experiment to the next level. 
 
 Extending Sperling's partial report procedure, by presenting many letters (arranged in a circle so as to maximize stimulants in the field of vision) and asking to recall only one (random) letter, it should demonstrate that sensory memory is greater than 9-12 items, and is indeed bound only by the amount of stimulus we can percieve and the delay between presentation and recall of stimulus.
